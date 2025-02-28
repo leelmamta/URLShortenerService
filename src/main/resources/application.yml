@@ -3,17 +3,7 @@ server:
 spring:
   profiles:
     active: local
-management:
-  endpoints:
-    web:
-      exposure:
-        include: health,info,metrics,loggers
-  endpoint:
-    health:
-      probes:
-        enabled: true
-  health:
-    livenessState:
-      enabled: true
-    readinessState:
-      enabled: true
+api:
+  url:
+   defaultExpiryTime: 3
+  # I am keeping 1 day -> and urlExpiry Time in seconds
