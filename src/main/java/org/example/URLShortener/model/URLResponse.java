@@ -16,5 +16,5 @@ public class URLResponse {
     private String tinyURL;
     private Date expiryTimeStamp; // in days
     private Date createdTimeStamp;
-    private String User_Id;
+    private String user_Id;
 }

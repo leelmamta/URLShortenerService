@@ -27,18 +27,24 @@ import java.util.Date;
 public class URLShortenerService {
 
     @Autowired
-    URLConfigLoader urlConfigLoader; 
+    URLConfigLoader urlConfigLoader;
+
+    @Autowired
+    DataStoreService dataStoreService;
+
     public ResponseEntity<URLResponse> processShortening(URLRequest urlRequest){
-        // Here is algo
         URLResponse urlResponse = new URLResponse();
         ResponseEntity<URLResponse> responseEntity = null;
         Instant now = Instant.now();
         Instant futureTime = null;
 
-        // tinyURL
         String tinyURL = null;
         String longURL = urlRequest.getLongURL();
-        tinyURL = getTinyURL(longURL);
+
+        if(StringUtils.isNotBlank(urlRequest.getCustomURL()))
+            tinyURL = urlRequest.getCustomURL();
+        else
+            tinyURL = getTinyURL(longURL);
 
         // Expiry Time Calculation
         if(StringUtils.isNotBlank(urlRequest.getExpiryTimeStamp()))
@@ -46,16 +52,24 @@ public class URLShortenerService {
         else
             futureTime = now.plus(urlConfigLoader.getUrlExpiryTime(), ChronoUnit.DAYS);
 
+        responseEntity = mapEntityResponse(urlRequest, tinyURL, futureTime, now);
+//        Created responseEntity and stored in dynamoDB
+        log.info("the Response Entity Structure is = {}", responseEntity);
+        saveURLResponse(responseEntity.getBody());
 
-        return new ResponseEntity<>(URLResponse.builder()
+        return responseEntity;
+    }
+
+    private static ResponseEntity<URLResponse> mapEntityResponse(URLRequest urlRequest, String tinyURL, Instant futureTime, Instant now) {
+        ResponseEntity<URLResponse> responseEntity;
+        responseEntity =  new ResponseEntity<>(URLResponse.builder()
                 .longURL(urlRequest.getLongURL())
-                .User_Id(urlRequest.getUser_Id())
+                .user_Id(urlRequest.getUser_Id())
                 .tinyURL(tinyURL) // Needs to create
                 .expiryTimeStamp(Date.from(futureTime)) // Needs to map
                 .createdTimeStamp(Date.from(now))
                 .build(),HttpStatus.ACCEPTED);
-
-//        return urlResponse;
+        return responseEntity;
     }
 
     // Algorithm -> It is not secure just using for the Implementation pupose.
@@ -65,6 +79,7 @@ public class URLShortenerService {
     // Step -03 Convert these bytes to decimal
     // Step -04 Encode the result into a Base62 encoded string: DZFbb43
     // And return the string
+
     private  String getTinyURL(String input) {
         String tinyURL = null;
         try {
@@ -85,7 +100,14 @@ public class URLShortenerService {
         return tinyURL ;
     }
 
+    private String saveURLResponse(URLResponse urlResponse){
+        log.info("Saving the URLResponse into the db.");
+        dataStoreService.saveURLs(urlResponse);
+        return "data added to dynamoDB SuccessFully.";
+    }
 
-
+    public URLResponse fetchURLResponse(String tinyURL){
+        return dataStoreService.getItemByTinyURL(tinyURL);
+    }
 
 }
