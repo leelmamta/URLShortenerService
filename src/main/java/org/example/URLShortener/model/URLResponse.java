@@ -14,7 +14,7 @@ import java.util.Date;
 public class URLResponse {
     private String longURL;
     private String tinyURL;
-    private Date expiryTimeStamp; // in days
-    private Date createdTimeStamp;
+    private String expiryTimeStamp; // in days
+    private String createdTimeStamp;
     private String user_Id;
 }

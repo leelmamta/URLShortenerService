@@ -1,11 +1,9 @@
 package org.example.URLShortener.controller;
 
-import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.example.URLShortener.model.URLRequest;
 import org.example.URLShortener.model.URLResponse;
-import org.example.URLShortener.service.DataStoreService;
 import org.example.URLShortener.service.URLShortenerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -22,16 +20,12 @@ public class APIController {
     @Autowired
     URLShortenerService urlShortenerService;
 
-    @Autowired
-    DataStoreService dataStoreService;
-
     @PostMapping("/v1/publish")
     ResponseEntity<URLResponse> shortenURL(@RequestBody String requestBody, @RequestHeader Map<String, String> requestHeaders) throws Exception {
         log.info("Processing the request = {}", requestBody);
         ResponseEntity<URLResponse> responseResponseEntity = null;
         StopWatch stopWatch = null;
         URLRequest urlRequest = null;
-        JsonNode rootNode = null;
         try{
             stopWatch = new StopWatch();
             stopWatch.start();

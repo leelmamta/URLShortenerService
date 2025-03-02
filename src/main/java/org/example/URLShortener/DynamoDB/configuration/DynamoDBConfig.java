@@ -1,4 +1,4 @@
-package org.example.URLShortener.configuration;
+package org.example.URLShortener.DynamoDB.configuration;
 import com.amazonaws.auth.AWSCredentials;
 import com.amazonaws.auth.BasicAWSCredentials;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDB;
