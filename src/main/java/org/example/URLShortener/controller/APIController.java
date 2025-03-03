@@ -43,7 +43,7 @@ public class APIController {
     @GetMapping("/v2")
     String getLongURL(@RequestParam String tinyURL){
        URLResponse urlResponse =  urlShortenerService.fetchURLResponse(tinyURL);
-       log.info("the urlResponse fetched is = {}",urlResponse);
+       log.info("the processed urlResponse = {}", urlResponse);
         return urlResponse.getLongURL();
     }
 }

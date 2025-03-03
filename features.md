@@ -16,12 +16,15 @@ Sample Response:
 HTTP/1.1 301 Moved Permanently Location: https://www.example.com/some/very/long/url
 ✅✔️🎯
 
-### Feature -03
+### Feature-03
+Caching of URLs
+✅✔️🎯 
+
+### Feature -04
+Enable Cache Scheduling too. 
 AOP - Schema Validation of requestBody and Logging
 🚀
-### Feature-04   
-Caching of URLs
-🚀
+
 ### Feature-05 
 Create the User Authentication UTIlity service ⏳🕓
 
