@@ -9,4 +9,7 @@ public class URLConstants {
 
     public static final String EXCEPTION_MESSAGE = "RequestBody json is not proper.";
 
+    public static final String URL_RESPONSE_CACHE = "URLResponseCache";
+
+    public static final String URL_RESPONSE_MAP_CACHE = "URLResponseMapCache";
 }
