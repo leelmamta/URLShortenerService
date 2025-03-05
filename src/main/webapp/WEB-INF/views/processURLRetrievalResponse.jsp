@@ -5,12 +5,12 @@
     <title>Original Redirected Response is </title>
 </head>
 <body>
+    <h2>URL Shortening Result</h2>
 
-    <h2>Here is your Original URL </h2>
-    <form action="ui/processURLRetrievalResponse" method="post">
-        <label for="longURL">longURL:</label>
-        <input type="text" id="longURL" name="longURL" required><br><br>
-        <input type="submit" value="Submit">
-    </form>
+    <p><strong>Original URL:</strong> ${longURL}</p>
+    <p><strong>Shortened URL:</strong> <a href="${shortenedURL}">${shortenedURL}</a></p>
+
+    <br>
+    <a href="/ui/processURLRetrievalResponse">Shorten Another URL</a>
 </body>
 </html>
