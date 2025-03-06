@@ -22,8 +22,8 @@ public class JSPController {
 
     // Process shortening request
     @PostMapping("/processURLShortenerResponse")
-    public String processShortenRequest(@RequestParam("longURL") String longURL,
-                                        @RequestParam(value = "customURL", required = false) String customURL,
+    public String processShortenRequest( @RequestParam(value = "customURL", required = false) String customURL,
+                                         @RequestParam("longURL") String longURL,
                                         @RequestParam(value = "expiryTimeStamp", required = false) String expiryTimeStamp,
                                         @RequestParam(value = "user_Id", required = false) String user_Id,
                                         Model model) {
@@ -36,9 +36,9 @@ public class JSPController {
         URLResponse urlResponse = urlShortenerService.processShortening(urlRequest).getBody();
         model.addAttribute("customURL", urlResponse.getTinyURL());
         model.addAttribute("longURL", longURL);
-        model.addAttribute("createdTimeStamp", urlResponse.getCreatedTimeStamp());
         model.addAttribute("expiryTimeStamp", urlResponse.getExpiryTimeStamp());
-        model.addAttribute("user_Id", urlResponse.getUser_Id());
+        model.addAttribute("createdTimeStamp", urlResponse.getCreatedTimeStamp());
+        model.addAttribute("userId", urlResponse.getUser_Id());
         return "processURLShortenerResponse"; // Forward to shortenResponse.jsp
     }
 
@@ -50,10 +50,11 @@ public class JSPController {
 
     // Process retrieval request
     @PostMapping("/processURLRetrievalResponse")
-    public String processRetrieveRequest(@RequestParam("tinyURL") String tinyURL, Model model) {
+    public String processRetrieveRequest(@RequestParam("tinyURL") String tinyURL,
+                                         @RequestParam("originalURL") String originalURL,  Model model) {
         URLResponse urlResponse = urlShortenerService.fetchURLResponse(tinyURL);
         model.addAttribute("tinyURL", tinyURL);
-        model.addAttribute("originalURL", urlResponse.getLongURL());
+        model.addAttribute("originalURL", originalURL);
 
         return "processURLRetrievalResponse"; // Forward to retrieveResponse.jsp
     }

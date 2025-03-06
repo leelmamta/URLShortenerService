@@ -7,10 +7,9 @@
 <body>
     <h2>URL Shortening Result</h2>
 
-    <p><strong>Original URL:</strong> ${longURL}</p>
-    <p><strong>Shortened URL:</strong> <a href="${shortenedURL}">${shortenedURL}</a></p>
-
+    <p><strong>Original URL:</strong> ${tinyURL}</p>
+    <p><strong>Shortened URL:</strong>${originalURL}</p>
     <br>
-    <a href="/ui/processURLRetrievalResponse">Shorten Another URL</a>
+    <a href="/ui/showURLRetrievalForm">Shorten Another URL</a>
 </body>
 </html>

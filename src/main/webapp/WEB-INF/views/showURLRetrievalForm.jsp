@@ -7,7 +7,7 @@
 <body>
 
     <h2>Add your shortened URL to retrieve the Original URL.</h2>
-    <form action="/ui/showURLRetrievalForm" method="get">
+    <form action="/ui/processURLRetrievalResponse" method="post">
         <label for="tinyURL">tinyURL:</label>
         <input type="text" id="tinyURL" name="tinyURL" required><br><br>
         <input type="submit" value="Submit">
