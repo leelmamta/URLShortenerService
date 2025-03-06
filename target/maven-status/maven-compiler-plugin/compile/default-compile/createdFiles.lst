@@ -1,7 +1,0 @@
-org\example\URLShortener\model\UserInfo$UserInfoBuilder.class
-org\example\URLShortener\model\UserInfo.class
-org\example\URLShortener\model\URLMapping.class
-org\example\Main.class
-org\example\URLShortener\service\URLShortenerService.class
-org\example\URLShortener\controller\APIController.class
-org\example\URLShortener\model\URLMapping$URLMappingBuilder.class

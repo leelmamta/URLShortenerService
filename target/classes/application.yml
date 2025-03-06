@@ -1,9 +1,0 @@
-server:
-  port: 8081
-spring:
-  profiles:
-    active: local
-api:
-  url:
-   defaultExpiryTime: 3
-  # I am keeping 1 day -> and urlExpiry Time in seconds

@@ -3,6 +3,11 @@ server:
 spring:
   profiles:
     active: local
+  mvc:
+    view:
+      prefix: /WEB-INF/views/
+      suffix: .jsp
+
 api:
   url:
    defaultExpiryTime: 3
