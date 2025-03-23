@@ -31,6 +31,7 @@ public class APIController {
             stopWatch.start();
             urlRequest = new ObjectMapper().readValue(requestBody,URLRequest.class);
             log.info("URLRequest = {}",urlRequest);
+//             We can take important information related to particular request using headers
             responseResponseEntity = urlShortenerService.processShortening(urlRequest);
             stopWatch.stop();
         }catch(Exception e){

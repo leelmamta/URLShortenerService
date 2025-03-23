@@ -21,14 +21,14 @@ Caching of URLs
 ✅✔️🎯 
 
 ### Feature -04
-Enable Cache Scheduling too. 
-AOP - Schema Validation of requestBody
+Enable Cache Scheduling too.
 Create the FrontEnd to Run this from GUI ⏳🕓
 ✅✔️🎯
 
 ### Feature-05 
-Create the User Authentication UTIlity service ⏳🕓
+Adding the UnitTestcases and Making the UI hosted. 
 
-### Feature-06 
+### Feature-06 (Miscell)
+Create the User Authentication UTIlity service ⏳🕓
 We will use the kafka or data Stream pipeline for the analytics or dynamoStream to analyze the data analytics⏳🕓
 Dockerize and containarize. 
